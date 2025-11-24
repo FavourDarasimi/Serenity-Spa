@@ -19,7 +19,10 @@ const Footer = ({
     <motion.footer
       className="bg-stone-900 text-stone-400 py-12 border-t border-stone-800"
       initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1, transition: { duration: 1, ease: "easeInOut" } }}
+      whileInView={{
+        opacity: 1,
+        transition: { duration: 1, ease: "easeInOut" },
+      }}
       viewport={{ once: true }}
     >
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
@@ -104,9 +107,6 @@ const Footer = ({
       <div className="max-w-6xl mx-auto px-6 mt-12 pt-8 border-t border-stone-800 text-xs flex flex-col sm:flex-row justify-between text-center sm:text-left">
         <p className="mb-2 sm:mb-0">
           &copy; 2025 Serenity Spa. All rights reserved.
-        </p>
-        <p>
-          Designed with <span className="text-rose-400">♥</span>
         </p>
       </div>
     </motion.footer>
