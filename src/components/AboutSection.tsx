@@ -1,4 +1,5 @@
 import image from "../assets/image1.png";
+import { motion } from "framer-motion";
 
 type props = {
   aboutRef: React.RefObject<HTMLDivElement | null>;
@@ -10,12 +11,34 @@ const AboutSection = ({ aboutRef }: props) => {
       ref={aboutRef}
       className="py-20 lg:py-0 lg:h-[calc(100vh-var(--nav-h))] flex flex-col lg:flex-row gap-12 lg:gap-40 justify-center items-center bg-white px-4"
     >
-      <img
+      <motion.img
         src={image}
         alt=""
         className="w-full max-w-md lg:max-w-none lg:w-[700px] lg:h-[700px] object-cover hover:scale-105 duration-500 transition rounded-lg"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{
+          opacity: 1,
+          x: 0,
+          transition: {
+            duration: 0.8,
+            ease: "easeInOut",
+          },
+        }}
+        viewport={{ once: true }}
       />
-      <div className="max-w-[450px] text-center lg:text-left">
+      <motion.div
+        className="max-w-[450px] text-center lg:text-left"
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{
+          opacity: 1,
+          x: 0,
+          transition: {
+            duration: 0.8,
+            ease: "easeInOut",
+          },
+        }}
+        viewport={{ once: true }}
+      >
         <div className="flex gap-3 items-center mb-4 justify-center lg:justify-start">
           <span className="w-10 h-[2px] bg-stone-400"></span>
           <h1 className="text-2xl tracking-widest font-bold ">Our Approach</h1>
@@ -32,7 +55,7 @@ const AboutSection = ({ aboutRef }: props) => {
         <button className="bg-[#d26444] border p-3 text-white rounded-lg text-[17px] hover:scale-105 transition duration-300 tracking-wider">
           Learn more about us
         </button>
-      </div>
+      </motion.div>
     </section>
   );
 };

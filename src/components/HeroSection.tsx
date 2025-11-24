@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 type props = {
   heroRef: React.RefObject<HTMLDivElement | null>;
   pricingRef: React.RefObject<HTMLDivElement | null>;
@@ -17,7 +19,18 @@ const HeroSection = ({
       ref={heroRef}
       className="h-[calc(100vh-var(--nav-h))] flex flex-col justify-center items-center bg-gradient-to-b from-white via-stone-100 to-stone-200 px-4"
     >
-      <div className="space-y-6 max-w-4xl text-center">
+      <motion.div
+        className="space-y-6 max-w-4xl text-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.8,
+            ease: "easeInOut",
+          },
+        }}
+      >
         <div className="flex gap-2 items-center justify-center">
           <span className="w-3 h-3 bg-[#d26444] rounded-full animate-pulse "></span>
           <span className="text-[#888888] font-medium tracking-widest text-sm sm:text-base">
@@ -47,7 +60,7 @@ const HeroSection = ({
             Explore Packages
           </button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

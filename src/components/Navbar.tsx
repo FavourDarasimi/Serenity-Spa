@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 type NavBarProps = {
   heroRef: React.RefObject<HTMLDivElement | null>;
   aboutRef: React.RefObject<HTMLDivElement | null>;
@@ -57,8 +59,11 @@ const Navbar = ({
 
   return (
     <>
-      <nav
+      <motion.nav
         ref={navRef}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
         className={`sticky top-0 w-full z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-white/90 backdrop-blur-md shadow-sm py-4"
@@ -141,28 +146,34 @@ const Navbar = ({
         </div>
 
         {/* 4. Mobile Menu Overlay (Slide Down) */}
-        <div
-          className={`md:hidden absolute top-full left-0 w-full bg-white border-t border-stone-100 shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
-            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="flex flex-col items-center py-8 space-y-6">
-            {navLinks.map((link) => (
-              <h1
-                key={link.name}
-                ref={link.ref}
-                onClick={() => {
-                  scrollToSection(link.ref);
-                  setIsMobileMenuOpen(false);
-                }}
-                className="text-sm cursor-pointer font-bold uppercase tracking-widest text-stone-600 hover:text-stone-900"
-              >
-                {link.name}
-              </h1>
-            ))}
-          </div>
-        </div>
-      </nav>
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="md:hidden absolute top-full left-0 w-full bg-white border-t border-stone-100 shadow-lg overflow-hidden"
+            >
+              <div className="flex flex-col items-center py-8 space-y-6">
+                {navLinks.map((link) => (
+                  <h1
+                    key={link.name}
+                    ref={link.ref}
+                    onClick={() => {
+                      scrollToSection(link.ref);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="text-sm cursor-pointer font-bold uppercase tracking-widest text-stone-600 hover:text-stone-900"
+                  >
+                    {link.name}
+                  </h1>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
     </>
   );
 };

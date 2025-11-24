@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const BookingForm = ({ closePopover }: { closePopover: () => void }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -5,7 +7,13 @@ const BookingForm = ({ closePopover }: { closePopover: () => void }) => {
   };
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-lg max-w-md">
+    <motion.div
+      className="bg-white p-8 rounded-lg shadow-lg max-w-md"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ ease: "easeInOut", duration: 0.3 }}
+    >
       <h2 className="text-2xl font-serif text-stone-800 mb-6">
         Book an Appointment
       </h2>
@@ -85,7 +93,7 @@ const BookingForm = ({ closePopover }: { closePopover: () => void }) => {
           Request Appointment
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

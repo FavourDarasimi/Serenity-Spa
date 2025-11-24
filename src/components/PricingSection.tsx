@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 type props = {
   pricingRef: React.RefObject<HTMLDivElement | null>;
 };
@@ -52,7 +54,19 @@ const PricingSection = ({ pricingRef }: props) => {
 
   return (
     // bg-stone-50 creates the visual separation from the previous white section
-    <section ref={pricingRef} className="py-24 bg-stone-50 text-stone-800">
+    <motion.section
+      ref={pricingRef}
+      className="py-24 bg-stone-50 text-stone-800"
+      initial={{ opacity: 0 }}
+      whileInView={{
+        opacity: 1,
+        transition: {
+          duration: 1,
+          ease: "easeInOut",
+        },
+      }}
+      viewport={{ once: true }}
+    >
       <div className="max-w-5xl px-6 mx-auto">
         {/* Section Header */}
         <div className="mb-16 text-center">
@@ -103,7 +117,7 @@ const PricingSection = ({ pricingRef }: props) => {
           </a>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

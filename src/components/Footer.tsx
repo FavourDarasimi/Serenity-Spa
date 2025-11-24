@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 type FooterProps = {
   aboutRef: React.RefObject<HTMLDivElement | null>;
   servicesRef: React.RefObject<HTMLDivElement | null>;
@@ -14,7 +16,12 @@ const Footer = ({
   scrollToSection,
 }: FooterProps) => {
   return (
-    <footer className="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
+    <motion.footer
+      className="bg-stone-900 text-stone-400 py-12 border-t border-stone-800"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1, transition: { duration: 1, ease: "easeInOut" } }}
+      viewport={{ once: true }}
+    >
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
         {/* Column 1: Brand */}
         <div className="col-span-1 md:col-span-1 text-center sm:text-left">
@@ -102,7 +109,7 @@ const Footer = ({
           Designed with <span className="text-rose-400">♥</span>
         </p>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 export default Footer;

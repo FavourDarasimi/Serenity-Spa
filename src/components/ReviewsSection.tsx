@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 type props = {
   reviewsRef: React.RefObject<HTMLDivElement | null>;
 };
@@ -34,21 +36,44 @@ const ReviewsSection = ({ reviewsRef }: props) => {
     >
       <div className="max-w-6xl px-6 mx-auto">
         {/* Header */}
-        <div className="mb-16 text-center">
+        <motion.div
+          className="mb-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 0.8,
+              ease: "easeInOut",
+            },
+          }}
+          viewport={{ once: true }}
+        >
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-stone-500">
             Kind Words
           </span>
           <h2 className="mt-3 text-3xl font-serif md:text-4xl text-stone-800">
             Stories of Relaxation
           </h2>
-        </div>
+        </motion.div>
 
         {/* Review Grid */}
         <div className="grid gap-12 md:gap-8 md:grid-cols-3">
-          {reviews.map((review) => (
-            <div
+          {reviews.map((review, i) => (
+            <motion.div
               key={review.id}
               className="flex flex-col items-center text-center group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: i * 0.2,
+                  duration: 0.8,
+                  ease: "easeInOut",
+                },
+              }}
+              viewport={{ once: true }}
             >
               {/* The Stars */}
               <div className="flex gap-1 mb-6 text-yellow-500/80">
@@ -83,7 +108,7 @@ const ReviewsSection = ({ reviewsRef }: props) => {
                   {review.service}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
