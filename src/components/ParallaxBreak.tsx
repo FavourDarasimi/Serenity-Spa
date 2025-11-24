@@ -1,4 +1,4 @@
-import spawide from "../assets/spa-wide.png";
+import spawide from "../assets/spa-wide.webp";
 
 const ParallaxBreak = () => {
   return (

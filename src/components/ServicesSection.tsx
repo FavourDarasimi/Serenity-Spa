@@ -1,6 +1,6 @@
-import service1 from "../assets/service1.jpg";
-import service2 from "../assets/service2.jpg";
-import service3 from "../assets/service3.jpg";
+import service1 from "../assets/service1.webp";
+import service2 from "../assets/service2.webp";
+import service3 from "../assets/service3.webp";
 
 type props = {
   servicesRef: React.RefObject<HTMLDivElement | null>;

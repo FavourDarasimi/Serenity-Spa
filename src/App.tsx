@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Popover from "./components/Popover";
 import BookingForm from "./components/BookingForm";
 import { Toaster, toast } from "react-hot-toast";
+import ParallaxBreak from "./components/ParallaxBreak";
 
 function App() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -53,6 +54,7 @@ function App() {
       <AboutSection aboutRef={aboutRef} />
       <ServicesSection servicesRef={servicesRef} />
       <PricingSection pricingRef={pricingRef} />
+      <ParallaxBreak />
       <ReviewsSection reviewsRef={reviewsRef} />
       <Footer
         aboutRef={aboutRef}
