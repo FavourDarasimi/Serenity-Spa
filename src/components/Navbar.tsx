@@ -1,6 +1,23 @@
 import { useState, useEffect, useRef } from "react";
+type NavBarProps = {
+  heroRef: React.RefObject<HTMLDivElement | null>;
+  aboutRef: React.RefObject<HTMLDivElement | null>;
+  servicesRef: React.RefObject<HTMLDivElement | null>;
+  pricingRef: React.RefObject<HTMLDivElement | null>;
+  reviewsRef: React.RefObject<HTMLDivElement | null>;
+  scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
+  openPopover: () => void;
+};
 
-const Navbar = () => {
+const Navbar = ({
+  heroRef,
+  aboutRef,
+  servicesRef,
+  pricingRef,
+  reviewsRef,
+  scrollToSection,
+  openPopover,
+}: NavBarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -32,10 +49,10 @@ const Navbar = () => {
 
   // Navigation Links Data
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Menu", href: "#menu" },
-    { name: "Reviews", href: "#reviews" },
+    { name: "About", ref: aboutRef },
+    { name: "Services", ref: servicesRef },
+    { name: "Menu", ref: pricingRef },
+    { name: "Reviews", ref: reviewsRef },
   ];
 
   return (
@@ -50,30 +67,34 @@ const Navbar = () => {
       >
         <div className=" mx-auto px-6 flex items-center justify-between">
           {/* 1. Logo */}
-          <a
-            href="#"
+          <h1
+            onClick={() => scrollToSection(heroRef)}
             className="text-xl md:text-2xl font-serif font-medium text-stone-800 tracking-tight"
           >
             Serenity<span className="text-rose-400">.</span>
-          </a>
+          </h1>
 
           {/* 2. Desktop Navigation (Hidden on Mobile) */}
           <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
-              <a
+              <h1
                 key={link.name}
-                href={link.href}
-                className="text-xs font-bold uppercase tracking-[0.15em] text-stone-600 hover:text-stone-900 transition-colors"
+                ref={link.ref}
+                onClick={() => scrollToSection(link.ref)}
+                className="text-xs cursor-pointer font-bold uppercase tracking-[0.15em] text-stone-600 hover:text-stone-900 transition-colors"
               >
                 {link.name}
-              </a>
+              </h1>
             ))}
           </div>
 
           {/* 3. CTA Button & Mobile Toggle */}
           <div className="flex items-center gap-4">
             {/* Book Button (Visible on all screens, but smaller on mobile) */}
-            <button className="px-4 py-2 md:px-6 bg-[#d26444] text-white text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all duration-300">
+            <button
+              onClick={openPopover}
+              className="px-4 py-2 md:px-6 bg-[#d26444] text-white text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all duration-300"
+            >
               Book Now
             </button>
 
@@ -127,14 +148,17 @@ const Navbar = () => {
         >
           <div className="flex flex-col items-center py-8 space-y-6">
             {navLinks.map((link) => (
-              <a
+              <h1
                 key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-sm font-bold uppercase tracking-widest text-stone-600 hover:text-stone-900"
+                ref={link.ref}
+                onClick={() => {
+                  scrollToSection(link.ref);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="text-sm cursor-pointer font-bold uppercase tracking-widest text-stone-600 hover:text-stone-900"
               >
                 {link.name}
-              </a>
+              </h1>
             ))}
           </div>
         </div>

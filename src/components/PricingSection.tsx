@@ -1,4 +1,8 @@
-const PricingSection = () => {
+type props = {
+  pricingRef: React.RefObject<HTMLDivElement | null>;
+};
+
+const PricingSection = ({ pricingRef }: props) => {
   // Data for the menu
   const massages = [
     {
@@ -48,7 +52,7 @@ const PricingSection = () => {
 
   return (
     // bg-stone-50 creates the visual separation from the previous white section
-    <section id="menu" className="py-24 bg-stone-50 text-stone-800">
+    <section ref={pricingRef} className="py-24 bg-stone-50 text-stone-800">
       <div className="max-w-5xl px-6 mx-auto">
         {/* Section Header */}
         <div className="mb-16 text-center">
@@ -92,9 +96,11 @@ const PricingSection = () => {
 
         {/* Bottom Action */}
         <div className="mt-16 text-center">
-          <button className="px-8 py-3 text-sm font-bold tracking-widest text-white uppercase bg-[#d26444] hover:scale-105 transition duration-300">
-            Download Full Menu (PDF)
-          </button>
+          <a href="/Serenity-Spa-Menu.pdf" download>
+            <button className="px-8 py-3 text-sm font-bold tracking-widest text-white uppercase bg-[#d26444] hover:scale-105 transition duration-300">
+              Download Full Menu (PDF)
+            </button>
+          </a>
         </div>
       </div>
     </section>

@@ -1,0 +1,181 @@
+%PDF-1.7
+%âãÏÓ
+
+1 0 obj
+  << /Type /Catalog
+     /Pages 2 0 R
+  >>
+endobj
+
+2 0 obj
+  << /Type /Pages
+     /Kids [3 0 R]
+     /Count 1
+  >>
+endobj
+
+3 0 obj
+  << /Type /Page
+     /Parent 2 0 R
+     /Resources
+      << /Font
+          << /F1
+              << /Type /Font
+                 /Subtype /Type1
+                 /BaseFont /Helvetica
+              >>
+             /F2
+              << /Type /Font
+                 /Subtype /Type1
+                 /BaseFont /Helvetica-Bold
+              >>
+          >>
+      >>
+     /MediaBox [0 0 612 792]
+     /Contents 4 0 R
+  >>
+endobj
+
+4 0 obj
+  << /Length 2000 >>
+stream
+  BT
+    /F2 24 Tf
+    220 750 Td
+    (Serenity Spa Menu) Tj
+  ET
+
+  BT
+    /F2 18 Tf
+    100 700 Td
+    (Massage & Body) Tj
+  ET
+
+  BT
+    /F1 12 Tf
+    100 680 Td
+    (Swedish Massage) Tj
+    150 0 Td
+    ($90) Tj
+  ET
+  BT
+    /F1 10 Tf
+    -150 -15 Td
+    (60 min • Gentle relaxation & circulation) Tj
+  ET
+
+  BT
+    /F1 12 Tf
+    100 645 Td
+    (Deep Tissue) Tj
+    150 0 Td
+    ($110) Tj
+  ET
+  BT
+    /F1 10 Tf
+    -150 -15 Td
+    (60 min • Muscle recovery & pain relief) Tj
+  ET
+
+  BT
+    /F1 12 Tf
+    100 610 Td
+    (Hot Stone Therapy) Tj
+    150 0 Td
+    ($125) Tj
+  ET
+  BT
+    /F1 10 Tf
+    -150 -15 Td
+    (75 min • Heat therapy & tension release) Tj
+  ET
+
+  BT
+    /F1 12 Tf
+    100 575 Td
+    (Aromatherapy) Tj
+    150 0 Td
+    ($100) Tj
+  ET
+  BT
+    /F1 10 Tf
+    -150 -15 Td
+    (60 min • Essential oils of your choice) Tj
+  ET
+
+  BT
+    /F2 18 Tf
+    350 700 Td
+    (Facials & Skincare) Tj
+  ET
+
+  BT
+    /F1 12 Tf
+    350 680 Td
+    (Serenity Glow) Tj
+    150 0 Td
+    ($130) Tj
+  ET
+  BT
+    /F1 10 Tf
+    -150 -15 Td
+    (60 min • Deep cleansing & hydration) Tj
+  ET
+
+  BT
+    /F1 12 Tf
+    350 645 Td
+    (Hydra-Infusion) Tj
+    150 0 Td
+    ($180) Tj
+  ET
+  BT
+    /F1 10 Tf
+    -150 -15 Td
+    (90 min • Intense moisture & plumping) Tj
+  ET
+
+  BT
+    /F1 12 Tf
+    350 610 Td
+    (Anti-Aging Peel) Tj
+    150 0 Td
+    ($150) Tj
+  ET
+  BT
+    /F1 10 Tf
+    -150 -15 Td
+    (60 min • Skin renewal & surfacing) Tj
+  ET
+
+  BT
+    /F1 12 Tf
+    350 575 Td
+    (Express Facial) Tj
+    150 0 Td
+    ($75) Tj
+  ET
+  BT
+    /F1 10 Tf
+    -150 -15 Td
+    (30 min • Quick refresh for busy schedules) Tj
+  ET
+
+endstream
+endobj
+
+xref
+0 5
+0000000000 65535 f 
+0000000018 00000 n 
+0000000077 00000 n 
+0000000142 00000 n 
+0000000303 00000 n 
+
+trailer
+  << /Size 5
+     /Root 1 0 R
+  >>
+startxref
+2100
+%%EOF

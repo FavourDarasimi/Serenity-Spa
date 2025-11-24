@@ -2,7 +2,11 @@ import service1 from "../assets/service1.jpg";
 import service2 from "../assets/service2.jpg";
 import service3 from "../assets/service3.jpg";
 
-const ServicesSection = () => {
+type props = {
+  servicesRef: React.RefObject<HTMLDivElement | null>;
+};
+
+const ServicesSection = ({ servicesRef }: props) => {
   const services = [
     {
       title: "Therapeutic Massage",
@@ -25,7 +29,10 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-white flex flex-col justify-center">
+    <section
+      ref={servicesRef}
+      className="py-24 bg-white flex flex-col justify-center"
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-base md:text-[17px] font-bold tracking-[0.2em] uppercase text-stone-500">

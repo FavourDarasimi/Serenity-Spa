@@ -1,4 +1,8 @@
-const ReviewsSection = () => {
+type props = {
+  reviewsRef: React.RefObject<HTMLDivElement | null>;
+};
+
+const ReviewsSection = ({ reviewsRef }: props) => {
   const reviews = [
     {
       id: 1,
@@ -25,7 +29,7 @@ const ReviewsSection = () => {
 
   return (
     <section
-      id="reviews"
+      ref={reviewsRef}
       className="py-24 bg-white text-stone-800 flex flex-col justify-center"
     >
       <div className="max-w-6xl px-6 mx-auto">

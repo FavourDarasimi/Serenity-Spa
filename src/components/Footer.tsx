@@ -1,4 +1,18 @@
-const Footer = () => {
+type FooterProps = {
+  aboutRef: React.RefObject<HTMLDivElement | null>;
+  servicesRef: React.RefObject<HTMLDivElement | null>;
+  pricingRef: React.RefObject<HTMLDivElement | null>;
+  reviewsRef: React.RefObject<HTMLDivElement | null>;
+  scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
+};
+
+const Footer = ({
+  aboutRef,
+  servicesRef,
+  pricingRef,
+  reviewsRef,
+  scrollToSection,
+}: FooterProps) => {
   return (
     <footer className="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm">
@@ -17,28 +31,29 @@ const Footer = () => {
             Explore
           </h4>
           <ul className="space-y-2">
-            <li>
-              <a href="#about" className="hover:text-white transition-colors">
-                About Us
-              </a>
+            <li
+              className="hover:text-white transition-colors cursor-pointer"
+              onClick={() => scrollToSection(aboutRef)}
+            >
+              About Us
             </li>
-            <li>
-              <a
-                href="#services"
-                className="hover:text-white transition-colors"
-              >
-                Services
-              </a>
+            <li
+              className="hover:text-white transition-colors cursor-pointer"
+              onClick={() => scrollToSection(servicesRef)}
+            >
+              Services
             </li>
-            <li>
-              <a href="#menu" className="hover:text-white transition-colors">
-                Menu
-              </a>
+            <li
+              className="hover:text-white transition-colors cursor-pointer"
+              onClick={() => scrollToSection(pricingRef)}
+            >
+              Menu
             </li>
-            <li>
-              <a href="#reviews" className="hover:text-white transition-colors">
-                Reviews
-              </a>
+            <li
+              className="hover:text-white transition-colors cursor-pointer"
+              onClick={() => scrollToSection(reviewsRef)}
+            >
+              Reviews
             </li>
           </ul>
         </div>

@@ -1,9 +1,13 @@
 import image from "../assets/image1.png";
 
-const AboutSection = () => {
+type props = {
+  aboutRef: React.RefObject<HTMLDivElement | null>;
+};
+
+const AboutSection = ({ aboutRef }: props) => {
   return (
     <section
-      id="about"
+      ref={aboutRef}
       className="py-20 lg:py-0 lg:h-[calc(100vh-var(--nav-h))] flex flex-col lg:flex-row gap-12 lg:gap-40 justify-center items-center bg-white px-4"
     >
       <img
