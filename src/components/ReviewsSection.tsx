@@ -1,5 +1,3 @@
-import React from "react";
-
 const ReviewsSection = () => {
   const reviews = [
     {
@@ -26,7 +24,10 @@ const ReviewsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white text-stone-800 h-[calc(100vh-var(--nav-h))] flex flex-col justify-center">
+    <section
+      id="reviews"
+      className="py-24 bg-white text-stone-800 flex flex-col justify-center"
+    >
       <div className="max-w-6xl px-6 mx-auto">
         {/* Header */}
         <div className="mb-16 text-center">
@@ -39,7 +40,7 @@ const ReviewsSection = () => {
         </div>
 
         {/* Review Grid */}
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-12 md:gap-8 md:grid-cols-3">
           {reviews.map((review) => (
             <div
               key={review.id}

@@ -1,5 +1,3 @@
-import React from "react";
-
 const PricingSection = () => {
   // Data for the menu
   const massages = [
@@ -50,14 +48,14 @@ const PricingSection = () => {
 
   return (
     // bg-stone-50 creates the visual separation from the previous white section
-    <section className="py-24 bg-stone-50 text-stone-800 h-[calc(100vh-var(--nav-h))]">
+    <section id="menu" className="py-24 bg-stone-50 text-stone-800">
       <div className="max-w-5xl px-6 mx-auto">
         {/* Section Header */}
         <div className="mb-16 text-center">
-          <span className="text-[17px] font-bold tracking-[0.2em] uppercase text-stone-500">
+          <span className="text-base md:text-[17px] font-bold tracking-[0.2em] uppercase text-stone-500">
             Treatment Menu
           </span>
-          <h2 className="mt-3 text-4xl font-serif text-stone-800 md:text-4xl">
+          <h2 className="mt-3 text-3xl md:text-4xl font-serif text-stone-800">
             Signature Treatments
           </h2>
           <p className="mt-4 text-stone-500 italic">
@@ -69,7 +67,7 @@ const PricingSection = () => {
         <div className="grid gap-16 md:grid-cols-2">
           {/* Column 1: Massage */}
           <div>
-            <h4 className="mb-8 text-[22px] font-medium tracking-widest text-center uppercase border-b border-stone-200 pb-4">
+            <h4 className="mb-8 text-xl md:text-[22px] font-medium tracking-widest text-center uppercase border-b border-stone-200 pb-4">
               Massage & Body
             </h4>
             <div className="space-y-6">
@@ -81,7 +79,7 @@ const PricingSection = () => {
 
           {/* Column 2: Facials */}
           <div>
-            <h4 className="mb-8 text-[22px] font-medium tracking-widest text-center uppercase border-b border-stone-200 pb-4">
+            <h4 className="mb-8 text-xl md:text-[22px] font-medium tracking-widest text-center uppercase border-b border-stone-200 pb-4">
               Facials & Skincare
             </h4>
             <div className="space-y-6">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,13 +52,13 @@ const Navbar = () => {
           {/* 1. Logo */}
           <a
             href="#"
-            className="text-2xl font-serif font-medium text-stone-800 tracking-tight"
+            className="text-xl md:text-2xl font-serif font-medium text-stone-800 tracking-tight"
           >
             Serenity<span className="text-rose-400">.</span>
           </a>
 
           {/* 2. Desktop Navigation (Hidden on Mobile) */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -73,7 +73,7 @@ const Navbar = () => {
           {/* 3. CTA Button & Mobile Toggle */}
           <div className="flex items-center gap-4">
             {/* Book Button (Visible on all screens, but smaller on mobile) */}
-            <button className="px-6 py-2 bg-[#d26444] text-white text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all duration-300">
+            <button className="px-4 py-2 md:px-6 bg-[#d26444] text-white text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all duration-300">
               Book Now
             </button>
 
@@ -136,17 +136,6 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <div className="pt-4 border-t border-stone-100 w-1/2 text-center">
-              <span className="block text-xs text-stone-400 mb-2">
-                Existing Client?
-              </span>
-              <a
-                href="#"
-                className="text-stone-800 font-serif italic underline"
-              >
-                Log In
-              </a>
-            </div>
           </div>
         </div>
       </nav>
