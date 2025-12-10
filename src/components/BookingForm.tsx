@@ -1,20 +1,26 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const BookingForm = ({ closePopover }: { closePopover: () => void }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    closePopover();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      closePopover();
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   return (
     <motion.div
-      className="bg-white p-8 rounded-lg shadow-lg max-w-5xl"
+      className="bg-white p-8 rounded-lg shadow-lg "
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ ease: "easeInOut", duration: 0.3 }}
     >
-      <h2 className="text-2xl font-serif text-stone-800 mb-6">
+      <h2 className="text-2xl text-center font-semibold font-serif text-stone-800 mb-6">
         Book an Appointment
       </h2>
       <form onSubmit={handleSubmit}>
@@ -26,6 +32,7 @@ const BookingForm = ({ closePopover }: { closePopover: () => void }) => {
             Name
           </label>
           <input
+            required
             type="text"
             id="name"
             className="w-full px-4 py-2 border border-stone-400 rounded-lg text-stone-700 focus:outline-none "
@@ -39,6 +46,7 @@ const BookingForm = ({ closePopover }: { closePopover: () => void }) => {
             Email
           </label>
           <input
+            required
             type="email"
             id="email"
             className="w-full px-4 py-2 border border-stone-400 rounded-lg text-stone-700 focus:outline-none "
@@ -52,6 +60,7 @@ const BookingForm = ({ closePopover }: { closePopover: () => void }) => {
             Phone
           </label>
           <input
+            required
             type="tel"
             id="phone"
             className="w-full px-4 py-2 border border-stone-400 rounded-lg text-stone-700 focus:outline-none "
@@ -81,16 +90,22 @@ const BookingForm = ({ closePopover }: { closePopover: () => void }) => {
             Preferred Date
           </label>
           <input
+            required
             type="date"
             id="date"
             className="w-full px-4 py-2 border border-stone-400 rounded-lg text-stone-700 focus:outline-none "
           />
         </div>
         <button
+          disabled={isSubmitting}
           type="submit"
-          className="w-full bg-[#d26444] hover:scale-105 text-white py-3 rounded-lg font-bold tracking-wider transition-all"
+          className={`w-full   ${
+            isSubmitting
+              ? "bg-[#d26444]/50 cursor-not-allowed"
+              : "bg-[#d26444] cursor-pointer"
+          } hover:scale-105 text-white py-3 rounded-lg font-bold tracking-wider transition-all`}
         >
-          Request Appointment
+          {isSubmitting ? "Requesting ..." : "Request Appointment"}
         </button>
       </form>
     </motion.div>

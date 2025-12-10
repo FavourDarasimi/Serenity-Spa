@@ -33,12 +33,12 @@ const Popover = ({ isOpen, onClose, children }: PopoverProps) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 "
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div ref={popoverRef} className="relative  ">
+          <div ref={popoverRef} className="relative  max-w-lg w-full">
             <button
               onClick={onClose}
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"

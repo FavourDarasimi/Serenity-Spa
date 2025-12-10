@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { hr } from "framer-motion/client";
 
 type NavBarProps = {
   heroRef: React.RefObject<HTMLDivElement | null>;
