@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { hr } from "framer-motion/client";
 
 type NavBarProps = {
   heroRef: React.RefObject<HTMLDivElement | null>;
@@ -36,7 +37,9 @@ const Navbar = ({
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const navRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     const updateNavHeight = () => {
       if (!navRef.current) return;
@@ -49,14 +52,44 @@ const Navbar = ({
     return () => window.removeEventListener("resize", updateNavHeight);
   }, []);
 
-  // Navigation Links Data
   const navLinks = [
-    { name: "About", ref: aboutRef },
-    { name: "Services", ref: servicesRef },
-    { name: "Menu", ref: pricingRef },
-    { name: "Reviews", ref: reviewsRef },
+    { name: "About", ref: aboutRef, href: "#about" },
+    { name: "Services", ref: servicesRef, href: "#services" },
+    { name: "Pricing", ref: pricingRef, href: "#pricing" },
+    { name: "Reviews", ref: reviewsRef, href: "#reviews" },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
+  const handleNavClick = (ref: React.RefObject<HTMLDivElement | null>) => {
+    setIsMobileMenuOpen(false);
+
+    setTimeout(() => {
+      scrollToSection(ref);
+    }, 100);
+  };
   return (
     <>
       <motion.nav
@@ -74,17 +107,17 @@ const Navbar = ({
           {/* 1. Logo */}
           <h1
             onClick={() => scrollToSection(heroRef)}
-            className="text-xl md:text-2xl font-serif font-medium text-stone-800 tracking-tight"
+            className="text-xl md:text-2xl font-serif font-medium text-stone-800 tracking-tight cursor-pointer"
           >
             Serenity<span className="text-rose-400">.</span>
           </h1>
 
-          {/* 2. Desktop Navigation (Hidden on Mobile) */}
+          {/* 2. Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
               <h1
                 key={link.name}
-                ref={link.ref}
+                // REMOVED ref={link.ref} HERE - This was the bug
                 onClick={() => scrollToSection(link.ref)}
                 className="text-xs cursor-pointer font-bold uppercase tracking-[0.15em] text-stone-600 hover:text-stone-900 transition-colors"
               >
@@ -95,7 +128,6 @@ const Navbar = ({
 
           {/* 3. CTA Button & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            {/* Book Button (Visible on all screens, but smaller on mobile) */}
             <button
               onClick={openPopover}
               className="px-4 py-2 md:px-6 bg-[#d26444] text-white text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all duration-300"
@@ -103,13 +135,11 @@ const Navbar = ({
               Book Now
             </button>
 
-            {/* Mobile Menu Toggle Button */}
             <button
               className="md:hidden text-stone-800 p-1"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
-                // X Icon
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -125,7 +155,6 @@ const Navbar = ({
                   />
                 </svg>
               ) : (
-                // Hamburger Icon
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -145,7 +174,7 @@ const Navbar = ({
           </div>
         </div>
 
-        {/* 4. Mobile Menu Overlay (Slide Down) */}
+        {/* 4. Mobile Pricing Overlay */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -153,17 +182,12 @@ const Navbar = ({
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden absolute top-full left-0 w-full bg-white border-t border-stone-100 shadow-lg overflow-hidden"
+              className="md:hidden absolute top-full left-0 w-full bg-white border-t border-stone-100 shadow-lg "
             >
-              <div className="flex flex-col items-center py-8 space-y-6">
+              <div className="flex flex-col items-center py-8 space-y-6 z-10">
                 {navLinks.map((link) => (
                   <h1
-                    key={link.name}
-                    ref={link.ref}
-                    onClick={() => {
-                      scrollToSection(link.ref);
-                      setIsMobileMenuOpen(false);
-                    }}
+                    onClick={() => handleNavClick(link.ref)}
                     className="text-sm cursor-pointer font-bold uppercase tracking-widest text-stone-600 hover:text-stone-900"
                   >
                     {link.name}

@@ -31,6 +31,7 @@ const ReviewsSection = ({ reviewsRef }: props) => {
 
   return (
     <section
+      id="reviews"
       ref={reviewsRef}
       className="py-24 bg-white text-stone-800 flex flex-col justify-center"
     >

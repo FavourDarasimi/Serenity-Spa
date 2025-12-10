@@ -55,6 +55,7 @@ const PricingSection = ({ pricingRef }: props) => {
   return (
     // bg-stone-50 creates the visual separation from the previous white section
     <motion.section
+      id="pricing"
       ref={pricingRef}
       className="py-24 bg-stone-50 text-stone-800"
       initial={{ opacity: 0 }}

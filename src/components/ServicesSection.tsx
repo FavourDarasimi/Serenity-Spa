@@ -31,6 +31,7 @@ const ServicesSection = ({ servicesRef }: props) => {
 
   return (
     <section
+      id="services"
       ref={servicesRef}
       className="py-24 bg-white flex flex-col justify-center"
     >

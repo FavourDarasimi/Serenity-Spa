@@ -8,7 +8,7 @@ const BookingForm = ({ closePopover }: { closePopover: () => void }) => {
 
   return (
     <motion.div
-      className="bg-white p-8 rounded-lg shadow-lg max-w-md"
+      className="bg-white p-8 rounded-lg shadow-lg max-w-5xl"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}

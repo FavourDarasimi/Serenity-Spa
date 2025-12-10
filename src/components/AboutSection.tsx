@@ -9,7 +9,8 @@ const AboutSection = ({ aboutRef }: props) => {
   return (
     <section
       ref={aboutRef}
-      className="py-20 lg:py-0 lg:h-[calc(100vh-var(--nav-h))] flex flex-col lg:flex-row gap-12 lg:gap-40 justify-center items-center bg-white px-4"
+      id="about"
+      className=" py-20 lg:py-0 lg:h-[calc(100vh-var(--nav-h))] flex flex-col lg:flex-row gap-12 lg:gap-40 justify-center items-center bg-white px-4"
     >
       <motion.img
         src={image}
